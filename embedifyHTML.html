@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+    <base target="_top">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>
+    
+      function parseInfo() {
+        
+        // Gather all the information needed to create the embed code and also set the permissions
+        var width = document.getElementById("embedWidth").value;
+        var height = document.getElementById("embedHeight").value;
+        var align = document.querySelector('input[name="switchAlign"]:checked').value;
+        var permission = document.querySelector('input[name="switchPermission"]:checked').value;
+        var url = '<?!= getURL() ?>'
+        
+        // Concatenate all the embed code components
+        var text = "<div style='width:100%;text-align:" + align + "'><iframe src='" + url + "' width='" + width + "' height='" + height + "'>...loading...</iframe></div>";
+        
+        // Fire up the 'setPermission()' method in the Document code to set the permission appropriately
+        google.script.run.withSuccessHandler(onSuccess).withFailureHandler(onFailure).setPermission(permission);
+       
+        // Put the embed code into the textbox
+        document.getElementById("textBoxCode").innerHTML = text;
+        
+        // Overwrite the HTML in the 'visible' element to reflect the confirmation screen
+        document.getElementById("visible").innerHTML = document.getElementById("confirmScreen").innerHTML; 
+      
+      }
+      
+      function copyToClipboard() {
+      
+        // Select (highlight) all the text in the textbox and copy it to the clipboard
+        document.getElementById("textBoxCode").select();
+        document.execCommand('copy');
+      
+      }
+      
+   
+      
+      function onSuccess() {
+        
+        // Do nothing, but reserve this space for future use?
+      }
+      
+      function onFailure(error) {
+        
+        // Alert the user that something bad happened via a pop-up in the Document
+        alert('ERROR: ' + error);
+      }    
+    
+    </script>
+    
+    <style>
+    
+      <!-- http://thestizmedia.com/radio-buttons-as-toggle-buttons-with-css/ -->
+
+      .switch-field {
+        font-family: arial;
+        padding: 40px;
+          overflow: hidden;
+      }
+      
+      .switch-title {
+        margin-bottom: 6px;
+        font-family: arial;
+        font-size: 12px;
+        text-align: left;
+        padding-top: 10px;
+      }
+      
+      .switch-field input {
+        display: none;
+      }
+      
+      .switchButton {
+        font-family: arial;
+        font-size: .9em;
+      }
+      
+      .switch-field label {
+        float: left;
+      }
+      
+      .switch-field label {
+        display: inline-block;
+        width: 60px;
+        background-color: #e4e4e4;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 14px;
+        font-weight: normal;
+        text-align: center;
+        text-shadow: none;
+        padding: 6px 14px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+        -webkit-transition: all 0.1s ease-in-out;
+        -moz-transition:    all 0.1s ease-in-out;
+        -ms-transition:     all 0.1s ease-in-out;
+        -o-transition:      all 0.1s ease-in-out;
+        transition:         all 0.1s ease-in-out;
+      }
+      
+      .switch-field label:hover {
+          cursor: pointer;
+      }
+      
+      .switch-field input:checked + label {
+        background-color: #1e90ff;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      
+      .switch-field label:first-of-type {
+        border-radius: 4px 0 0 4px;
+      }
+      
+      .switch-field label:last-of-type {
+        border-radius: 0 4px 4px 0;
+      }
+      
+      <!-- -------------------------------------------------------------------- -->
+    
+      .switchButton {
+        font-family: arial;
+        font-size: .9em;
+        color: #fff;
+      }
+    
+      .container {
+        text-align: center;
+        width: 100%;
+        height: 100%;
+      }
+      
+      .container-text {
+        text-align: center;
+        width: 100%;
+        height: 300px;
+      }
+      
+      .title {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-family: arial;
+        font-size: 30px;
+        color: #1e90ff;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      
+      .text {
+        font-family: arial;
+        font-size: 14px;
+        color: black;
+        text-align: left;
+        padding-top: 10px;
+      }
+      
+      .textBox {
+        padding-bottom:10px;
+        padding-top: 15px;
+      }
+      
+      .btn-ok {
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 14px;
+        background: #1e90ff;
+        text-decoration: none;
+        display:inline-block;
+        width: 80px;
+        padding:5px 10px;
+        position: absolute;
+        bottom: 0;
+      }
+      
+      .btn-cancel {
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0px;
+        font-family: Arial;
+        color: #000000;
+        font-size: 14px;
+        background: #cccccc;
+        text-decoration: none;
+        display:inline-block;
+        width: 80px;
+        padding:5px 10px;
+        position: absolute;
+        bottom: 0;      
+      }
+
+      .copyButton {
+        width: 100%;
+      }
+      
+      .footer {
+        text-align: left;
+      }
+      
+      .textInput {
+        font-family: arial;
+        font-size: 14pt;
+        border: 0px;
+        color: #000;
+        border-bottom: 2px solid #1e90ff;
+        padding-left: 10px;
+        font-weight: bold;
+      }
+      
+      .blueButton {
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 14px;
+        background: #1e90ff;
+        text-decoration: none;
+        display:inline-block;
+        width: 200px;
+        padding:5px 10px;
+        margin-top: 20px;
+      }
+      
+      .confirmationText {
+        font-family: arial;
+        font-size: 14px;
+        color: black;
+        text-align: left;
+        margin-top: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
+        line-height: 1.5em;
+      }      
+      
+
+    </style>
+    
+  </head>
+  <body>
+  <div class="container">
+    <div class="container-text">
+      <span class="title">Embed-ify!</span>
+      <div id="visible">
+        <form class="form">
+          <div class="switch-field">
+            <div class="switch-title">What permission do you want viewers to have?</div>
+            
+            <input type="radio" id="switchPermissionComment" name="switchPermission" value="comment" checked/>
+            <label for="switchPermissionComment"><span class="switchButton">Comment</span></label>
+            
+            <input type="radio" id="switchPermissionEdit" name="switchPermission" value="edit" />
+            <label for="switchPermissionEdit"><span class="switchButton">Edit</span></label>
+            
+            <input type="radio" id="switchPermissionView" name="switchPermission" value="view" />
+            <label for="switchPermissionView"><span class="switchButton">View</span></label>
+          </div>
+          
+          <br />
+          <br />
+          
+          <div class="switch-field">
+            <div class="switch-title">Where do you want the document positioned on the webpage?</div>
+            <input type="radio" id="switchAlignCenter" name="switchAlign" value="center" checked/>
+            <label for="switchAlignCenter"><span class="switchButton">Center</span></label>
+            <input type="radio" id="switchAlignLeft" name="switchAlign" value="left" />
+            <label for="switchAlignLeft"><span class="switchButton">Left</span></label>
+            <input type="radio" id="switchAlignRight" name="switchAlign" value="right" />
+            <label for="switchAlignRight"><span class="switchButton">Right</span></label>
+          </div>
+          
+          <br />
+          <br />
+          
+          <div class="switch-field2">
+            <div class="switch-title">What do you want the width of the document to be?&nbsp;&nbsp;&nbsp;<input class="textInput" type="text" id="embedWidth" name="width" value="1000" size="3"></div>
+            <div class="switch-title">What do you want the height of the document to be?&nbsp;&nbsp;&nbsp;<input class="textInput" type="text" id="embedHeight" name="height" value="1100" size="3"><br />  </div>  
+          </div>
+        </form>
+        
+        <button onclick="parseInfo()" class="blueButton">Get Embed Code!</button>
+  
+      </div><!-- visible -->
+      
+      <div class="text" id="confirmScreen" style="display:none;">
+        <span class="confirmationText">This document is now accessible to anyone with the link. Please be careful!
+        Anyone who has access to the site where this is embedded will also have access to the document, so be careful
+        who you share the link with!<br />
+        <br />
+        Copy and paste the text below into the HTML code of the page you are embedding into.</span>
+        <div class="textBox"><center><textarea id="textBoxCode" cols="50" rows="6" readonly></textarea></center></div>
+        
+        <div class="copyButton">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+          <button onclick="copyToClipboard()" class="blueButton">Copy to clipboard</button>
+          <br/>
+          
+        </div><!-- copyButton -->        
+      </div><!-- text -->     
+    </div><!-- containerText -->  
+    
+    <div class="footer">
+      <input class='btn-cancel' type="button" value="Close" onclick="google.script.host.close()" />
+    </div><!-- footer -->
+  </div><!-- container -->
+  
+  </body>
+</html>
+
+
