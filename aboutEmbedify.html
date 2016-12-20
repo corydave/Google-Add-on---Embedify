@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    
+    <style>
+      .container {
+        text-align: center;
+        width: 100%;
+        height: 100%;
+      }
+      
+      .container-text {
+        text-align: center;
+        width: 100%;
+        height: 250px;
+        background-color: #fff;
+        padding-top: 50px;
+      }
+      
+      .title {
+        padding-top: 5px;
+        margin-bottom: 20px;
+        font-family: arial;
+        font-size: 30px;
+        color: #1e90ff;
+        font-weight: bold;
+        text-align: center;
+      }
+      
+      .version {
+        font-family: arial;
+        font-size: 10px;
+        color: #1e90ff;
+        font-weight: bold;
+        padding-left: 10px;
+      }
+      
+      .text {
+        font-family: arial;
+        font-size: 14px;
+        color: black;
+        text-align: left;
+        margin-top: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
+        line-height: 1.5em;
+      }
+      
+      .footer {
+        width: 100%;
+        display: inline-block;
+        text-align:left;
+      }
+      
+      .social {
+        color: #1e90ff;
+        width:70%;
+        text-align: right;
+        vertical-align: bottom;
+        display: inline-block;
+      }
+      
+      .versionContainer {
+        text-align: left;
+        width:25%;
+        vertical-align: bottom;
+        display: inline-block;
+      }
+      
+      .fa {
+        margin-left: 5px;
+      }
+      
+      .link {
+        color: #1e90ff;
+      }
+      
+      .headerContainer {
+        width: 100%;
+        height: 300px;
+        margin: 0px;
+        top: 0;
+        left: 0;
+        position: fixed;
+        text-align: center;
+      }
+      
+      .header {
+        background-color: #1e90ff;
+        border-radius: 25px;
+        height: 50px;
+        width: 100%;
+      }
+      
+      .headerTop {
+        background-color: #1e90ff;
+        height: 30px;
+        border-radius: 20px;
+        z-index: 2;
+      }
+      
+      .headerBottom {
+        height: 30px;
+        width: 100%;
+        position: fixed;
+        top: 15px;
+        background-color: #1e90ff;
+      }
+      
+      .headerCircle {
+        height: 60px;
+        width: 60px;
+        border-radius: 50px;
+        background-color: #fff;
+        position: fixed;
+        left: 50%;
+        top: 15px;
+        z-index:100;
+        transform: translateX(-50%);
+        text-align: center;
+        display: inline-block;
+      }
+      
+      .headerInnerCircle {
+        height: 46px;
+        width: 46px;
+        border-radius: 50px;
+        background-color: #1e90ff;
+        position: fixed;
+        z-index:110;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      
+      .logo {
+        top: 50%;
+        left: 50%;
+        position: fixed;
+        font-family: courier;
+        font-weight: bold;
+        font-size: 1.3em;
+        overflow: visible;
+        color: white;
+        transform: translate(-50%, -50%);
+        z-index: 120;
+      }
+      
+      
+      .headerAll {
+        position: fixed;
+        top: 70;
+        border: 3px solid #1e90ff;
+      
+      }
+      
+      .bottomBar {
+        position: absolute;
+        bottom: 5px;
+        width: 100%;
+      }
+
+      
+      
+    </style>
+    
+  </head>
+  <body>
+  <div class="container">
+    <div class="headerContainer">
+      
+      <div class="headerTop">
+      </div><!-- headerTop -->
+    
+      <div class="headerBottom">
+      </div><!-- headerBottom -->
+    
+      <div class="headerCircle">
+        <div class="headerInnerCircle">
+          <div class="logo">
+            &lt;/&gt;
+          </div>
+        </div><!-- headerInnerCircle -->
+      </div><!-- headerCircle -->  
+    
+      <div class="headerAll">
+
+        <div class="container-text">
+          <span class="title">About Embed-ify!</span><br />
+          <div class="text">
+            Created by me (Dave Ghidiu). You should totally <a href="http://www.daveghidiu.com">check out my other
+            projects</a>! I'm a fan of computer science, running, the notion of "open", Google products, Vizslas, and educational
+            technology. Drop me a line!
+          </div>
+        
+          <div class="bottomBar">
+            <div class="versionContainer">
+              <span class="version">version <?!= version() ?></span>
+            </div><!-- versionContainer -->
+            <div class="social">
+              <a class="link" href="https://www.linkedin.com/in/dave-ghidiu-3a255918?trk=nav_responsive_tab_profile" target="_blank"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+              <a class="link" href="https://twitter.com/FringeEdTech" target="_blank"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+              <a class="link" href="https://github.com/corydave" target="_blank"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+              <a class="link" href="https://plus.google.com/+DaveGhidiu" target="_blank"><i class="fa fa-google-plus-official fa-2x" aria-hidden="true"></i></a>
+              <a class="link" href="mailto://daveghidiu@gmail.com" target="_blank"><i class="fa fa-envelope-square fa-2x" aria-hidden="true"></i></a>
+              <a class="link" href="http://www.daveghidiu.com" target="_blank"><i class="fa fa-link fa-2x" aria-hidden="true"></i></a>
+              <a class="link" href="http://www.fringeedtech.com" target="_blank"><i class="fa fa-pied-piper-pp fa-2x" aria-hidden="true"></i></a>
+            </div><!-- social -->
+          </div><!-- bottomBar -->
+        </div><!-- container-text -->
+      </div><!-- headerAll -->
+    </div><!-- headerContainer -->
+  </div><!-- container -->
+ 
+  </body>
+</html>
+
+
